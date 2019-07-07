@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :persona do
-    name { "MyString" }
-    pv { 1 }
-    pa { 1 }
+    name { Faker::JapaneseMedia::DragonBall.character }
+    pv { Faker::Number.between(1, 100) }
+    pa { Faker::Number.between(1, 100) }
   end
 end

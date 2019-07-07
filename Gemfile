@@ -47,6 +47,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   # Use the Rails static code analyzer and code formatter Rubocop-rails
   gem 'rubocop-rails'
+  #  provides RSpec- and Minitest-compatible one-liners to test common Rails functionality
+  gem 'shoulda-matchers'
 end
 
 group :development do
