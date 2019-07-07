@@ -39,6 +39,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   # Use faker to populate factories
   gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
+  #  It simply creates a rainbow trail of test results. It also counts the number of examples as they execute and highlights failed and pending specs.
+  gem 'nyan-cat-formatter'
   # Use relaxed rules for Rubocop
   gem 'relaxed-rubocop'
   # Use Rspec for tests
