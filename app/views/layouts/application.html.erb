@@ -4,12 +4,37 @@
     <title>Fight</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+ <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <%= link_to "sample app", '#', id: "logo" %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Home",   '#' %></li>
+            <li><%= link_to "Help",   '#' %></li>
+            <li><%= link_to "Log in", '#' %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <input id="pet_dog" name="pet_dog" type="checkbox" value="1" />
+<label for="pet_dog">I own a dog</label>
+<input id="pet_cat" name="pet_cat" type="checkbox" value="1" />
+<label for="pet_cat">I own a cat</label>
+
+
+<%= form_tag({controller: "personas", action: "search"}, method: "get", class: "nifty_form") %>
+
+  <%= form_tag new_persona_path, method: :post do %>
+     <%= submit_tag 'Call Action' %>
+  <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>
