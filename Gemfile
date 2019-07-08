@@ -5,8 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-# efficient binary serialization format Msgpack
-gem 'msgpack_rails'
+gem 'active_model_serializers', '~> 0.10.0', require: true, github: 'rails-api/active_model_serializers', branch: '0-10-stable'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0.rc1'
 # Use sqlite3 as the database for Active Record
@@ -31,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+# Use Rack CORS for handling Cross-Origin Resource Sharing, making cross-origin AJAX possible.
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
