@@ -40,6 +40,18 @@ RSpec.describe PersonasController, type: :controller do
   # end
   # end
 
+    # context "the persona does not exist" do
+    #  let(:id) { "123" }
+
+    #  it "returns not found" do
+    #    subject
+
+    #    expect(json_response).to be_not_found
+    #  end
+    # end
+  #end
+
+
   describe "#new"
 
   describe "#create" do
@@ -72,7 +84,6 @@ RSpec.describe PersonasController, type: :controller do
   end
 
   describe "#edit"
-
   # describe "#update" do
   #  let!(:persona) { create(:persona) }
   #  let(:id) { persona.id }
@@ -113,5 +124,5 @@ RSpec.describe PersonasController, type: :controller do
   #    expect(json_response).to be_not_found
   #  end
   # end
-  # end
+  end
 end

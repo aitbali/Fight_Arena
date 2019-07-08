@@ -11,6 +11,7 @@ class PersonasController < ApplicationController
     @personas = Persona.all
     render :loose if Persona.last.pv.zero?
     render :win if Opponent.last.pv.zero?
+
   end
 
   # GET method to get a persona by id
@@ -95,6 +96,7 @@ class PersonasController < ApplicationController
     @persona.save
     if @persona.errors.empty?
       render :index
+ts
     else
       flash[:error] = 'Failed to edit persona!'
       render json: { errors: @persona.errors }, status: :forbiddden
@@ -187,4 +189,5 @@ class PersonasController < ApplicationController
   def win; end
 
   def loose; end
+
 end
