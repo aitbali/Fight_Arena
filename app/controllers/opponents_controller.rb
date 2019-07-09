@@ -1,30 +1,34 @@
-class PersonasController < ApplicationController
+class OpponentsController < ApplicationController
   skip_before_action :verify_authenticity_token
   # GET method to get all products from database
   require 'faker'
   def index
-    @personas = Persona.all
+    @personas = Opponent.all
     render json: @personas
   end
 
   # GET method to get a persona by id
   def show
-    @persona = Persona.find(params[:id])
+    @persona = Opponent.find(params[:id])
     render json: @persona
   end
 
   # GET method for the new persona form
   def new
-    @persona = Persona.new
+    @persona = Opponent.new
   end
 
   # POST method for processing form data
   def create
-    @persona = Persona.new(create_params)
+    Opponent.delete_all
+    Opponent.get_primary_key(1)
+    @persona = Opponent.new(create_params)
     @persona.save
     if @persona.errors.empty?
+      flash[:notice] = 'Persona added!'
       render :index
     else
+      flash[:error] = 'Failed to edit persona!'
       # render json: { errors: @persona.errors }, status: :forbiddden
       render :new
     end
@@ -32,12 +36,12 @@ class PersonasController < ApplicationController
 
   # GET method for editing a persona based on id
   def edit
-    @persona = Persona.find(params[:id])
+    @persona = Opponent.find(params[:id])
   end
 
   # PUT method for updating in database a persona based on id
   def update
-    @persona = Persona.find(params[:id])
+    @persona = Opponent.find(params[:id])
     @persona.update(update_params)
     if @persona.errors.empty?
       flash[:notice] = 'Persona updated!'
@@ -51,7 +55,7 @@ class PersonasController < ApplicationController
 
   # DELETE method for deleting a persona from database based on id
   def destroy
-    @persona = Persona.find(params[:id])
+    @persona = Opponent.find(params[:id])
     if @persona.delete
       flash[:notice] = 'Persona deleted!'
       head :no_content

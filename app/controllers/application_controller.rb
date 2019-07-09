@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect from forgery with: :exception
+  protect_from_forgery with: :exception
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
