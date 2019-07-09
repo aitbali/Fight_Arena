@@ -1,8 +1,10 @@
 class PersonasController < ApplicationController
+  skip_before_action :verify_authenticity_token
   # GET method to get all products from database
+  require 'faker'
   def index
     @personas = Persona.all
-    # render json: @personas
+    render json: @personas
   end
 
   # GET method to get a persona by id
@@ -18,14 +20,16 @@ class PersonasController < ApplicationController
 
   # POST method for processing form data
   def create
+    Persona.destroy_all
+    Persona.get_primary_key(1)
     @persona = Persona.new(create_params)
     @persona.save
     if @persona.errors.empty?
       flash[:notice] = 'Persona added!'
-      render json: @persona
+      render :index
     else
       flash[:error] = 'Failed to edit persona!'
-      render json: { errors: @persona.errors }, status: :forbiddden
+      # render json: { errors: @persona.errors }, status: :forbiddden
       render :new
     end
   end
