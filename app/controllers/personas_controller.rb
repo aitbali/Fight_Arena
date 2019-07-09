@@ -20,7 +20,7 @@ class PersonasController < ApplicationController
 
   # POST method for processing form data
   def create
-    Persona.destroy_all
+    Persona.delete_all
     Persona.get_primary_key(1)
     @persona = Persona.new(create_params)
     @persona.save
