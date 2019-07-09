@@ -19,6 +19,6 @@ class Persona < ApplicationRecord
 
   def defaults
     self.pv = 100
-    self.pa = 50
+    self.pa = 100
   end
 end

@@ -1,7 +1,6 @@
 class PersonasController < ApplicationController
   skip_before_action :verify_authenticity_token
   # GET method to get all products from database
-  require 'faker'
   def index
     @personas = Persona.all
     render json: @personas
@@ -20,7 +19,7 @@ class PersonasController < ApplicationController
 
   # POST method for processing form data
   def create
-    @persona = Persona.new(create_params)
+    @persona = Persona.new(name: Faker::JapaneseMedia::OnePiece.character)
     @persona.save
     if @persona.errors.empty?
       render :index

@@ -26,7 +26,7 @@ RSpec.describe PersonasController, type: :controller do
       subject
       expect(json_response[:persona][:name]).to eq(persona.name)
       expect(json_response[:persona][:pv]).to eq(100)
-      expect(json_response[:persona][:pa]).to eq(50)
+      expect(json_response[:persona][:pa]).to eq(100)
     end
 
     # context "the persona does not exist" do

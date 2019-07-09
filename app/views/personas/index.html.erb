@@ -1,47 +1,39 @@
- <link rel="stylesheet" href="/assets/stylesheet/personas.css"/>
 
-<% a = Faker::JapaneseMedia::DragonBall.character %>
+<%= render "layouts/topbanniere" %>
+
 
 <div class="navbar">
-<h1>FIGHT!</h1>
+
 </div>
 <div class="navbar">
 	<%n=2%>	
-	 <form class="form-inline my-2 my-lg-0">
-      <button type="button" class="btn btn-danger">HIGH</button>
-      <button type="button" class="btn btn-warning">MEDIUM</button>
-      <button type="button" class="btn btn-success">LOW</button>
-    </form>
-	<div id="perso1">
-		<h1>
-		<%= a %>
-		</h1>
-		<%= render "layouts/perso#{n}" %>
+	<div>
+		<h2>PV : <%= Opponent.last.pv %></h2>
+		<h2>PA : <%= Opponent.last.pa %></h2>
+	</div>
+
+	<div >	
+		<%= render "layouts/persos/perso#{rand(1..7)}" %>
+			<h1>
+		<%= Opponent.last.name.capitalize %>____a.K.a__ALi
+		</h1 >
 		<% n-=1 %>
 	</div>
-	<div style="font-size=2em"><h1>VS</h1></div>
-	<div id="perso1">	
-		<%= render "layouts/perso#{n}" %>
+	<div ><h1>VS</h1></div>
+	<div >	
+		<%= render "layouts/persos/perso#{rand(1..7)}" %>
 		<h1>
-		<%= Persona.last.name.upcase %> alias <%= Faker::JapaneseMedia::OnePiece.character %>
+		<%= Persona.last.name.capitalize %>____a.K.a__Ryu
 	    </h1>
-	</div>
-	 <form class="form-inline my-2 my-lg-0">
-      <button type="button" class="btn btn-danger">HIGH</button>
-      <button type="button" class="btn btn-warning">MEDIUM</button>
-      <button type="button" class="btn btn-success">LOW</button>
-    </form>
-</div>
-
-<div class="navbar">
-	<div>
-		
 	</div>
 	<div>
 		<h2>PV : <%= Persona.last.pv %></h2>
 		<h2>PA : <%= Persona.last.pa %></h2>
 	</div>
 </div>
+<div class="navbar">
+	  <button type="button" class="btn btn-warning">\_______________FIGHT!</button>
+      <button type="button" class="btn btn-success">FIGHT!_______________/</button>
+</div>
 
-	
 

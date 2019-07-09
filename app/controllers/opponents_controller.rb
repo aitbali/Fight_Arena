@@ -1,7 +1,6 @@
 class OpponentsController < ApplicationController
   skip_before_action :verify_authenticity_token
   # GET method to get all products from database
-  require 'faker'
   def index
     @personas = Opponent.all
     render json: @personas
@@ -20,15 +19,11 @@ class OpponentsController < ApplicationController
 
   # POST method for processing form data
   def create
-    Opponent.delete_all
-    Opponent.get_primary_key(1)
-    @persona = Opponent.new(create_params)
+    @persona = Opponent.new(name: Faker::JapaneseMedia::DragonBall.character)
     @persona.save
     if @persona.errors.empty?
-      flash[:notice] = 'Persona added!'
       render :index
     else
-      flash[:error] = 'Failed to edit persona!'
       # render json: { errors: @persona.errors }, status: :forbiddden
       render :new
     end
