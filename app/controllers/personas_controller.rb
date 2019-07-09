@@ -1,6 +1,7 @@
 class PersonasController < ApplicationController
   skip_before_action :verify_authenticity_token
   # GET method to get all products from database
+  require 'faker'
   def index
     @personas = Persona.all
     render :loose if Persona.last.pv.zero?
@@ -11,7 +12,6 @@ class PersonasController < ApplicationController
     @personas = Persona.all
     render :loose if Persona.last.pv.zero?
     render :win if Opponent.last.pv.zero?
-
   end
 
   # GET method to get a persona by id

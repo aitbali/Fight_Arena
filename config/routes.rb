@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   get 'reports/index'
   get 'reports/show'
   get 'reports/new'
@@ -30,4 +31,11 @@ Rails.application.routes.draw do
   get '/choix3', to: 'personas#choix3', as: 'choix3'
   get '/choix4', to: 'personas#choix4', as: 'choix4'
   post '/name', to: 'personas#name', as: 'name'
+=======
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :personas
+
+  root to: 'personas#new'
+>>>>>>> a39d5ad... front
 end
