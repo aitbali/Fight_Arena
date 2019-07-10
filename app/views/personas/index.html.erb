@@ -1,39 +1,36 @@
+<% content_for("page_header") do %>
+ <%= stylesheet_link_tag 'application.css' %>
+<% end %>
 
-<%= render "layouts/topbanniere" %>
 
-
-<div class="navbar">
-
+<div class="head">
+  <%= render "layouts/topbanniere" %>
 </div>
-<div class="navbar">
-	<%n=2%>	
-	<div>
-		<h2>PV : <%= Opponent.last.pv %></h2>
-		<h2>PA : <%= Opponent.last.pa %></h2>
-	</div>
 
-	<div >	
-		<%= render "layouts/persos/perso#{rand(1..7)}" %>
-			<h1>
-		<%= Opponent.last.name.capitalize %>____a.K.a__ALi
-		</h1 >
+<div class="joystick">	  
+  <button type="button" class="cool">FIGHT!___COOL____________/</button>
+  <button type="button" class="hard">FIGHT!___HARD____________/</button>
+</div>
+
+
+<div class="arena">
+	<%n=2%>
+	<div>	
+		<%= render "layouts/persos/perso#{rand(21..31)}g" %>
 		<% n-=1 %>
 	</div>
-	<div ><h1>VS</h1></div>
-	<div >	
-		<%= render "layouts/persos/perso#{rand(1..7)}" %>
-		<h1>
-		<%= Persona.last.name.capitalize %>____a.K.a__Ryu
-	    </h1>
+	<% c = rand(0..30)%>
+	<div ><h1
+		<% if c < 10 %>
+			style="font-size: 10em"
+		<% elsif c > 10 && c > 20 %>
+			style="font-size: 30em"
+		<% else %>
+			style="font-size: 50em"
+		<%end%> >VS</h1></div>
+	<div>	
+		<%= render "layouts/persos/perso#{rand(11..16)}d" %>
 	</div>
-	<div>
-		<h2>PV : <%= Persona.last.pv %></h2>
-		<h2>PA : <%= Persona.last.pa %></h2>
-	</div>
-</div>
-<div class="navbar">
-	  <button type="button" class="btn btn-warning">\_______________FIGHT!</button>
-      <button type="button" class="btn btn-success">FIGHT!_______________/</button>
 </div>
 
 

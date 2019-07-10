@@ -21,4 +21,8 @@ class Persona < ApplicationRecord
     self.pv = 100
     self.pa = 100
   end
+
+  def jo
+    "oo"
+  end
 end

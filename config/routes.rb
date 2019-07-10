@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :opponents
 
   root to: 'personas#new'
+  get '/personas', to: 'personas#index', as: 'fighter'
 end

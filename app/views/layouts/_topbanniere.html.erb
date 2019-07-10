@@ -1,28 +1,24 @@
- <div class="navbar">
- 	
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-      <button type="button" class="btn btn-warning">!</button>
-  <h1>FIGHT!FIGHT!FIGHT!FIGHT!FIGHT!FIGHT!FIGHT!FIGHT!FIGHT!FIGHT!FIGHT!FIGHT!FIGHT!FIGHT!FIGHT!FIGHT!FIGHT!</h1>
-</div>
+<% a = Opponent.new(name: Faker::TvShows::GameOfThrones.character ) %>
+<% b = Persona.new(name: Faker::TvShows::SouthPark.character ) %>
+
+ <div class="banniere"> 	
+      <button type="button" class="btn">
+            <div>
+                  <h2>PV : <%= a.pv %></h2>
+                  <h2>PA : <%= a.pa %></h2>
+            </div>
+            <div class="name">
+                  <h2><%= a.name %></h2>
+                  <h2>IA</h2>
+            </div>
+            <div class="name">
+                  <h2><%= b.name %></h2>
+                  <h2>YOU</h2>
+            </div >
+            <div>
+                  <h2>PV : <%= b.pv %></h2>
+                  <h2>PA : <%= b.pa %></h2>
+            </div>
+      </button>
+
+ </div>
