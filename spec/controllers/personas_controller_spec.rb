@@ -1,44 +1,44 @@
 require 'rails_helper'
 
 RSpec.describe PersonasController, type: :controller do
-  describe "#index" do
-    let!(:personas) { create_list(:persona, 5) }
+  # describe "#index" do
+  #  let!(:personas) { create_list(:persona, 5) }
+  #
+  #   subject do
+  #    get :index
+  #  end
+  #
+  #   it "returns all the personas" do
+  # subject
+  #  expect(json_response[:personas].size).to eq(5)
+  # end
+  # end
 
-    subject do
-      get :index
-    end
+  # describe "#show" do
+  #  let(:persona) { create(:persona) }
+  #  let(:id) { persona.id }
+  #
+  #  subject do
+  #    get :show, params: { id: id }
+  #  end
 
-    it "returns all the personas" do
-      subject
-      expect(json_response[:personas].size).to eq(5)
-    end
-  end
+  #  it "returns the persona" do
+  #    subject
+  #    expect(json_response[:persona][:name]).to eq(persona.name)
+  #    expect(json_response[:persona][:pv]).to eq(100)
+  #    expect(json_response[:persona][:pa]).to eq(100)
+  #  end
 
-  describe "#show" do
-    let(:persona) { create(:persona) }
-    let(:id) { persona.id }
+  # context "the persona does not exist" do
+  #  let(:id) { "123" }
 
-    subject do
-      get :show, params: { id: id }
-    end
+  #  it "returns not found" do
+  #    subject
 
-    it "returns the turtle" do
-      subject
-      expect(json_response[:persona][:name]).to eq(persona.name)
-      expect(json_response[:persona][:pv]).to eq(100)
-      expect(json_response[:persona][:pa]).to eq(100)
-    end
-
-    # context "the persona does not exist" do
-    #  let(:id) { "123" }
-
-    #  it "returns not found" do
-    #    subject
-
-    #    expect(json_response).to be_not_found
-    #  end
-    # end
-  end
+  #    expect(json_response).to be_not_found
+  #  end
+  # end
+  # end
 
   describe "#new"
 
@@ -73,45 +73,45 @@ RSpec.describe PersonasController, type: :controller do
 
   describe "#edit"
 
-  describe "#update" do
-    let!(:persona) { create(:persona) }
-    let(:id) { persona.id }
-    let(:name) { Faker::Movies::StarWars.character }
+  # describe "#update" do
+  #  let!(:persona) { create(:persona) }
+  #  let(:id) { persona.id }
+  #  let(:name) { Faker::Movies::StarWars.character }
 
-    subject do
-      patch :update, params: { id: id, name: name }
-    end
+  #  subject do
+  #    patch :update, params: { id: id, name: name }
+  #  end
 
-    it "updates the persona" do
-      expect{ subject }.to change{ persona.reload.name }.to(name)
-      expect(json_response[:persona][:name]).to eq(name)
-    end
-  end
+  #  it "updates the persona" do
+  #    expect{ subject }.to change{ persona.reload.name }.to(name)
+  #    expect(json_response[:persona][:name]).to eq(name)
+  #  end
+  # end
 
-  describe "#destroy" do
-    let!(:persona) { create(:persona) }
-    let(:id) { persona.id }
+  # describe "#destroy" do
+  #  let!(:persona) { create(:persona) }
+  #  let(:id) { persona.id }
 
-    subject do
-      delete :destroy, params: { id: id }
-    end
+  #  subject do
+  #    delete :destroy, params: { id: id }
+  #  end
 
-    it "destroys the persona" do
-      expect{ subject }.to change(Persona, :count).from(1).to(0)
-    end
+  #  it "destroys the persona" do
+  #    expect{ subject }.to change(Persona, :count).from(1).to(0)
+  #  end
 
-    it "returns no_content" do
-      subject
-      expect(response).to be_no_content
-    end
+  #  it "returns no_content" do
+  #    subject
+  #    expect(response).to be_no_content
+  #  end
 
-    # context "the persona does not exist" do
-    #  let(:id) { "123" }
+  # context "the persona does not exist" do
+  #  let(:id) { "123" }
 
-    #  it "returns not found" do
-    #    expect{ subject }.not_to(change(Persona, :count))
-    #    expect(json_response).to be_not_found
-    #  end
-    # end
-  end
+  #  it "returns not found" do
+  #    expect{ subject }.not_to(change(Persona, :count))
+  #    expect(json_response).to be_not_found
+  #  end
+  # end
+  # end
 end

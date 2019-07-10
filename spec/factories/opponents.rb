@@ -3,6 +3,7 @@
 # Table name: opponents
 #
 #  id         :integer          not null, primary key
+#  avatarnum  :integer
 #  name       :string
 #  pa         :integer
 #  pv         :integer
@@ -12,8 +13,8 @@
 
 FactoryBot.define do
   factory :opponent do
-    name { "MyString" }
-    pv { 1 }
-    pa { 1 }
+    name { Faker::JapaneseMedia::DragonBall.character }
+    pv { Faker::Number.between(1, 100) }
+    pa { Faker::Number.between(1, 100) }
   end
 end

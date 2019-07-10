@@ -8,11 +8,8 @@
 </div>
 
 <div class="joystick">	  
-  <%= button_to 'FIGHT COOL', attaque_cool_path, method: :get %>
-  <%= button_to 'FIGHT MEDIUM ', attaque_medium_path, method: :get %>
-  <%= button_to 'FIGHT HARD ', attaque_hard_path, method: :get %>
+  <%= button_to 'IA Turn', choose_action_path, method: :get %>
 </div>
-
 
 
 
@@ -22,8 +19,8 @@
 		<%= render "layouts/persos/perso#{Opponent.last.avatarnum}g" %>
 		<% n-=1 %>
 	</div>
-	<% c = Persona.last.pv %>	
-	<div class="separator"
+	<% c = Opponent.last.pv %>
+		<div class="separator"
 		<% if c < 10 %>
 			style="height: 10px ; width: 0px;" 
 		<% elsif c > 10 && c < 20 %>
@@ -50,5 +47,6 @@
 		<%= render "layouts/persos/perso#{Persona.last.avatarnum}d" %>
 	</div>
 </div>
+
 
 

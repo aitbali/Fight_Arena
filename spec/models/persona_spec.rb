@@ -3,6 +3,7 @@
 # Table name: personas
 #
 #  id         :integer          not null, primary key
+#  avatarnum  :integer
 #  name       :string
 #  pa         :integer
 #  pv         :integer

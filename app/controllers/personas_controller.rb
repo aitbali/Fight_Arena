@@ -2,8 +2,23 @@ class PersonasController < ApplicationController
   skip_before_action :verify_authenticity_token
   # GET method to get all products from database
   def index
+    if Persona.last.pv.zero?
+      render :loose
+    end
+    if Opponent.last.pv.zero?
+      render :win
+    end
     @personas = Persona.all
-    render json: @personas
+  end
+
+  def index2
+    if Persona.last.pv.zero?
+      render :loose
+    end
+    if Opponent.last.pv.zero?
+      render :win
+    end
+    @personas = Persona.all
   end
 
   # GET method to get a persona by id
@@ -19,13 +34,14 @@ class PersonasController < ApplicationController
 
   # POST method for processing form data
   def create
-    @persona = Persona.new(name: Faker::JapaneseMedia::OnePiece.character)
+    av = rand(11..16)
+    @persona = Persona.new(name: Faker::JapaneseMedia::OnePiece.character, pv: 100, pa: 100, avatarnum: av )
     @persona.save
     if @persona.errors.empty?
       render :index
     else
-      # render json: { errors: @persona.errors }, status: :forbiddden
-      render :new
+      render json: { errors: @persona.errors }, status: :forbiddden
+      # render :new
     end
   end
 
@@ -38,6 +54,7 @@ class PersonasController < ApplicationController
   def update
     @persona = Persona.find(params[:id])
     @persona.update(update_params)
+    @persona.save
     if @persona.errors.empty?
       flash[:notice] = 'Persona updated!'
       render json: @persona
@@ -54,6 +71,7 @@ class PersonasController < ApplicationController
     if @persona.delete
       flash[:notice] = 'Persona deleted!'
       head :no_content
+      render :index
     else
       flash[:error] = 'Failed to delete this persona!'
       render :destroy
@@ -68,4 +86,69 @@ class PersonasController < ApplicationController
   def update_params
     params.permit(:name, :pv, :pa)
   end
+
+  def attaque; end
+
+  def you_attaque_cool
+    unless Persona.last.pv.zero?
+      pa = Persona.last.pa
+      pv = Opponent.last.pv
+
+      if Persona.last.pa < 90
+        Persona.update(Persona.last.id, pa: pa + 10 )
+      else
+        Persona.update(Persona.last.id, pa: 100 )
+      end
+
+      if Opponent.last.pv > 3
+        Opponent.update(Opponent.last.id, pv: pv - Persona.last.pa / 30 )
+      else
+        Opponent.update(Opponent.last.id, pv: 0 )
+      end
+    end
+    render :index2
+  end
+
+  def you_attaque_medium
+    unless Persona.last.pv.zero?
+      pa = Persona.last.pa
+      pv = Opponent.last.pv
+
+      if Persona.last.pa > 5
+        Persona.update(Persona.last.id, pa: pa - 5 )
+      else
+        Persona.update(Persona.last.id, pa: 0 )
+      end
+
+      if Opponent.last.pv > 10
+        Opponent.update(Opponent.last.id, pv: pv - Persona.last.pa / 10 )
+      else
+        Opponent.update(Opponent.last.id, pv: 0 )
+      end
+    end
+    render :index2
+  end
+
+  def you_attaque_hard
+    unless Persona.last.pv.zero?
+      pa = Persona.last.pa
+      pv = Opponent.last.pv
+      if Persona.last.pa > 10
+        Persona.update(Persona.last.id, pa: pa - 10 )
+      else
+        Persona.update(Persona.last.id, pa: 0 )
+      end
+
+      if Opponent.last.pv > 20
+        Opponent.update(Opponent.last.id, pv: pv - Persona.last.pa / 5 )
+      else
+        Opponent.update(Opponent.last.id, pv: 0 )
+      end
+    end
+    render :index2
+  end
+
+  def win; end
+
+  def loose; end
 end

@@ -1,24 +1,21 @@
-<% a = Opponent.new(name: Faker::TvShows::GameOfThrones.character ) %>
-<% b = Persona.new(name: Faker::TvShows::SouthPark.character ) %>
 
  <div class="banniere"> 	
       <button type="button" class="btn">
             <div>
-                  <h2>PV : <%= a.pv %></h2>
-                  <h2>PA : <%= a.pa %></h2>
+                  <h2>PV : <%= Opponent.last.pv %></h2>
+                  <h2>PA : <%= Opponent.last.pa %></h2>
             </div>
             <div class="name">
-                  <h2><%= a.name %></h2>
+                  <h2><%= Opponent.last.name %></h2>
                   <h2>IA</h2>
             </div>
             <div class="name">
-                  <h2><%= b.name %></h2>
+                  <h2><%= Persona.last.name %></h2>
                   <h2>YOU</h2>
             </div >
             <div>
-                  <h2>PV : <%= b.pv %></h2>
-                  <h2>PA : <%= b.pa %></h2>
+                  <h2>PV : <%= Persona.last.pv %></h2>
+                  <h2>PA : <%= Persona.last.pa %></h2>
             </div>
       </button>
-
  </div>
