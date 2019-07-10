@@ -2,23 +2,15 @@ class PersonasController < ApplicationController
   skip_before_action :verify_authenticity_token
   # GET method to get all products from database
   def index
-    if Persona.last.pv.zero?
-      render :loose
-    end
-    if Opponent.last.pv.zero?
-      render :win
-    end
     @personas = Persona.all
+    render :loose if Persona.last.pv.zero?
+    render :win if Opponent.last.pv.zero?
   end
 
   def index2
-    if Persona.last.pv.zero?
-      render :loose
-    end
-    if Opponent.last.pv.zero?
-      render :win
-    end
     @personas = Persona.all
+    render :loose if Persona.last.pv.zero?
+    render :win if Opponent.last.pv.zero?
   end
 
   # GET method to get a persona by id
@@ -40,8 +32,7 @@ class PersonasController < ApplicationController
     if @persona.errors.empty?
       render :index
     else
-      render json: { errors: @persona.errors }, status: :forbiddden
-      # render :new
+      render :new
     end
   end
 

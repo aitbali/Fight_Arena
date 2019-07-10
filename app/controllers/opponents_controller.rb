@@ -41,10 +41,9 @@ class OpponentsController < ApplicationController
     @opponent.update(update_params)
     if @persona.errors.empty?
       flash[:notice] = 'Persona updated!'
-      render json: @persona
     else
       flash[:error] = 'Failed to edit opponent!'
-      render json: { errors: @opponent.errors }, status: :forbiddden
+
       render :edit
     end
   end
