@@ -9,5 +9,5 @@
 #
 
 class Report < ApplicationRecord
-  belongs_to :persona
+  validates :decription, presence: true
 end

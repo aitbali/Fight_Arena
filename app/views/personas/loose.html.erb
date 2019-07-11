@@ -2,7 +2,12 @@
  <%= stylesheet_link_tag 'application.css' %>
 <% end %>
 
-
+  <div class="reporting">
+  	<% Report.all.each do |r| %>
+  	<%= r.decription %>
+  	<br>
+  	<% end %>
+  </div>
 <div id="loose"><p>YOU LOOSE</p></div>
 <div class="banniere">
   <form action="/personas/new" method="get">
