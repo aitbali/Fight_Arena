@@ -1,3 +1,8 @@
+<% content_for("page_header") do %>
+ <%= stylesheet_link_tag 'application.css' %>
+<% end %>
+
+
 <div >
  	<div>
 	       <div class="start">OPPONENT IS READY!</bdiv>
@@ -5,7 +10,7 @@
 	
 	<div>
 		<div class="start">ARE YOU READY ?</div>
-        <form action="/personas" method="post">	
+        <form action="/choix" method="get">	
 		    <input class="start-btn" type="submit" value="YES GO!">  
 	    </form>
 	</div>

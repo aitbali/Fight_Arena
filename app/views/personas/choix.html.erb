@@ -1,0 +1,12 @@
+<% content_for("page_header") do %>
+ <%= stylesheet_link_tag 'application.css' %>
+<% end %>
+
+
+<div class="choix">
+<div><%= render "layouts/persos/perso1d" %><%= button_to 'RYU', choix1_path, method: :get %></div>
+<div><%= render "layouts/persos/perso2d" %><%= button_to 'KEN', choix2_path, method: :get %></div>
+<div><%= render "layouts/persos/perso3d" %><%= button_to 'GOKU', choix3_path, method: :get %></div>
+<div><%= render "layouts/persos/perso4d" %><%= button_to 'MONKEY D', choix4_path, method: :get %></div>
+</div>
+<div class="inst">CHOOSE YOUR CHARACTER</div>

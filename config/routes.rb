@@ -16,4 +16,9 @@ Rails.application.routes.draw do
   get '/choose_action', to: 'opponents#choose_action', as: 'choose_action'
   get '/win', to: 'personas#win', as: 'win'
   get '/loose', to: 'personas#loose', as: 'loose'
+  get '/choix', to: 'personas#choix', as: 'choix'
+  get '/choix1', to: 'personas#choix1', as: 'choix1'
+  get '/choix2', to: 'personas#choix2', as: 'choix2'
+  get '/choix3', to: 'personas#choix3', as: 'choix3'
+  get '/choix4', to: 'personas#choix4', as: 'choix4'
 end
