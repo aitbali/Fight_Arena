@@ -24,10 +24,51 @@ class PersonasController < ApplicationController
     @persona = Persona.new
   end
 
+  def choix; end
+
+  def choix1
+    @persona = Persona.new(name: Faker::JapaneseMedia::OnePiece.character, pv: 100, pa: 100, avatarnum: 1 )
+    @persona.save
+    if @persona.errors.empty?
+      render :index
+    else
+      render :new
+    end
+  end
+
+  def choix2
+    @persona = Persona.new(name: Faker::JapaneseMedia::OnePiece.character, pv: 100, pa: 100, avatarnum: 2 )
+    @persona.save
+    if @persona.errors.empty?
+      render :index
+    else
+      render :new
+    end
+  end
+
+  def choix3
+    @persona = Persona.new(name: Faker::JapaneseMedia::OnePiece.character, pv: 100, pa: 100, avatarnum: 3 )
+    @persona.save
+    if @persona.errors.empty?
+      render :index
+    else
+      render :new
+    end
+  end
+
+  def choix4
+    @persona = Persona.new(name: Faker::JapaneseMedia::OnePiece.character, pv: 100, pa: 100, avatarnum: 4 )
+    @persona.save
+    if @persona.errors.empty?
+      render :index
+    else
+      render :new
+    end
+  end
+
   # POST method for processing form data
   def create
-    av = rand(11..16)
-    @persona = Persona.new(name: Faker::JapaneseMedia::OnePiece.character, pv: 100, pa: 100, avatarnum: av )
+    @persona = Persona.new(name: Faker::JapaneseMedia::OnePiece.character, pv: 100, pa: 100, avatarnum: @av )
     @persona.save
     if @persona.errors.empty?
       render :index
