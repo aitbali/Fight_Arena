@@ -85,17 +85,14 @@ class OpponentsController < ApplicationController
       pa = Opponent.last.pa
       pv = Persona.last.pv
 
-      if Opponent.last.pa < 90
-        Opponent.update(Opponent.last.id, pa: pa + 10 )
-      else
-        Opponent.update(Opponent.last.id, pa: 100 )
-      end
-
       if Persona.last.pv > Opponent.last.pa / 30
         Persona.update(Persona.last.id, pv: pv - Opponent.last.pa / 30 )
+        Report.create(decription: "IA gave you a Cool Attaque , you loose #{Opponent.last.pa / 30} points of PV.  IA wins 5 points of PA. IA: PV=#{Opponent.last.pv} / PA=#{pa + 5} . YOU: PV=#{pv - Opponent.last.pa / 30} / PA=#{Persona.last.pa}")
       else
         Persona.update(Persona.last.id, pv: 0 )
       end
+
+      Opponent.update(Opponent.last.id, pa: pa + 5)
     end
     redirect_to controller: 'personas', action: 'index'
   end
@@ -105,36 +102,39 @@ class OpponentsController < ApplicationController
       pa = Opponent.last.pa
       pv = Persona.last.pv
 
+      if Persona.last.pv > Opponent.last.pa / 10
+        Persona.update(Persona.last.id, pv: pv - Opponent.last.pa / 10 )
+        Report.create(decription: "IA gave you a Medium Attaque , you loose #{Opponent.last.pa / 10} points of PV.  IA looses 5 points of PA.  IA: PV=#{Opponent.last.pv} / PA=#{pa - 5} . YOU: PV=#{pv - Opponent.last.pa / 10} / PA=#{Persona.last.pa}")
+      else
+        Persona.update(Persona.last.id, pv: 0 )
+      end
+
       if Opponent.last.pa > 5
         Opponent.update(Opponent.last.id, pa: pa - 5 )
       else
         Opponent.update(Opponent.last.id, pa: 0 )
       end
 
-      if Persona.last.pv > Opponent.last.pa / 10
-        Persona.update(Persona.last.id, pv: pv - Opponent.last.pa / 10 )
-      else
-        Persona.update(Persona.last.id, pv: 0 )
-      end
     end
     redirect_to controller: 'personas', action: 'index'
   end
 
   def ia_attaque_hard
     unless Opponent.last.pv.zero?
-      pa = Persona.last.pa
-      pv = Opponent.last.pv
+      pa = Opponent.last.pa
+      pv = Persona.last.pv
+
+      if Persona.last.pv > Opponent.last.pa / 5
+        Persona.update(Persona.last.id, pv: pv - Opponent.last.pa / 5 )
+        Report.create(decription: "IA gave you a Hard Attaque , you loose #{Opponent.last.pa / 5} points of PV.  IA looses 10 points of PA.  IA: PV=#{Opponent.last.pv} / PA=#{pa - 10} . YOU: PV=#{pv - Opponent.last.pa / 5} / PA=#{Persona.last.pa}")
+      else
+        Persona.update(Persona.last.id, pv: 0 )
+      end
 
       if Opponent.last.pa > 10
         Opponent.update(Opponent.last.id, pa: pa - 10 )
       else
         Opponent.update(Opponent.last.id, pa: 0 )
-      end
-
-      if Persona.last.pv > Opponent.last.pa / 5
-        Persona.update(Persona.last.id, pv: pv - Opponent.last.pa / 5 )
-      else
-        Persona.update(Persona.last.id, pv: 0 )
       end
     end
     redirect_to controller: 'personas', action: 'index'
