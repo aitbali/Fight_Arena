@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   get '/choix2', to: 'personas#choix2', as: 'choix2'
   get '/choix3', to: 'personas#choix3', as: 'choix3'
   get '/choix4', to: 'personas#choix4', as: 'choix4'
+  post '/name', to: 'personas#name', as: 'name'
 end

@@ -30,7 +30,7 @@ class PersonasController < ApplicationController
     @persona = Persona.new(name: Faker::JapaneseMedia::OnePiece.character, pv: 100, pa: 100, avatarnum: 1 )
     @persona.save
     if @persona.errors.empty?
-      render :index
+      render :name
     else
       render :new
     end
@@ -40,7 +40,7 @@ class PersonasController < ApplicationController
     @persona = Persona.new(name: Faker::JapaneseMedia::OnePiece.character, pv: 100, pa: 100, avatarnum: 2 )
     @persona.save
     if @persona.errors.empty?
-      render :index
+      render :name
     else
       render :new
     end
@@ -50,7 +50,7 @@ class PersonasController < ApplicationController
     @persona = Persona.new(name: Faker::JapaneseMedia::OnePiece.character, pv: 100, pa: 100, avatarnum: 3 )
     @persona.save
     if @persona.errors.empty?
-      render :index
+      render :name
     else
       render :new
     end
@@ -60,10 +60,14 @@ class PersonasController < ApplicationController
     @persona = Persona.new(name: Faker::JapaneseMedia::OnePiece.character, pv: 100, pa: 100, avatarnum: 4 )
     @persona.save
     if @persona.errors.empty?
-      render :index
+      render :name
     else
       render :new
     end
+  end
+
+  def name
+    Persona.update(Persona.last.id, pa: 0 )
   end
 
   # POST method for processing form data
@@ -88,8 +92,7 @@ class PersonasController < ApplicationController
     @persona.update(update_params)
     @persona.save
     if @persona.errors.empty?
-      flash[:notice] = 'Persona updated!'
-      render json: @persona
+      render :index
     else
       flash[:error] = 'Failed to edit persona!'
       render json: { errors: @persona.errors }, status: :forbiddden
@@ -116,7 +119,7 @@ class PersonasController < ApplicationController
   end
 
   def update_params
-    params.permit(:name, :pv, :pa)
+    params.require(:persona).permit(:name, :pv, :pa)
   end
 
   def attaque; end
@@ -178,6 +181,10 @@ class PersonasController < ApplicationController
       end
     end
     render :index2
+  end
+
+  def reporting
+    render text: 'Hello'
   end
 
   def win; end
