@@ -1,25 +1,42 @@
 # README
+________________________________________________FIGHT ARENA_________________________________________________________
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+Application se faisant affronter 2 personnages dans une arene de combat .
 
-* Ruby version
+-Framework et langage de développement : Ruby on Rails .
+-outil de versionning : Git
+-outils d aide au développement : Rspec, rubocop, Husky 
+-base de donnée : sqlite3 
 
-* System dependencies
+_________________________________________________LE JEU______________________________________________________________
 
-* Configuration
 
-* Database creation
+Un choix parmi 4 personnages pour combattre .
 
-* Database initialization
+Attribution d un adversaire parmi 12 personnages .
 
-* How to run the test suite
+3 niveaux d attaque possibles .
 
-* Services (job queues, cache servers, search engines, etc.)
+Attaque de l IA parmi 3 niveaux d attaques .
 
-* Deployment instructions
+Dégats provoqués dépendant du niveau de PA .
 
-* ...
-# fight_arena
+....Que du fun ....
+
+________________________________________________________________________________________________________________________
+
+
+
+
+Installation :
+
+- Cloner le repository de fight_arena
+- executer 'bundle install' dans le dossier telechargé
+- lancer la commande 'rails db:migrate'
+- dans un terminal ,selon où se trouve le dossier fight-arena , executer 'cd fight_arena && rails s'
+
+_________________________________________________________________________________________________________________________
+
+
+Abderrahim : https://github.com/aitbali
