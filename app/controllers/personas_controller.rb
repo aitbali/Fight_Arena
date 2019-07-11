@@ -133,7 +133,7 @@ class PersonasController < ApplicationController
 
       if Opponent.last.pv > 3
         Opponent.update(Opponent.last.id, pv: pv - Persona.last.pa / 30 )
-        Report.create(decription: "You gave a Cool Attaque , IA looses #{Persona.last.pa / 3} points of PV.  You win 5 points points of PA . IA: PV=#{pv - Persona.last.pa / 30} / PA=#{Opponent.last.pa} . YOU: PV=#{Persona.last.pv} / PA=#{pa + 5}")
+        Report.create(decription: "You gave a Cool Attaque , IA looses #{Persona.last.pa / 30} points of PV.  You win 5 points points of PA . IA: PV=#{pv - Persona.last.pa / 30} / PA=#{Opponent.last.pa} . YOU: PV=#{Persona.last.pv} / PA=#{pa + 5}")
       else
         Opponent.update(Opponent.last.id, pv: 0 )
       end
