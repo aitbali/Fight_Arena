@@ -15,4 +15,5 @@ class Persona < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
   validates :pv, presence: true
   validates :pa, presence: true
+  has_many :reports, dependent: :destroy
 end

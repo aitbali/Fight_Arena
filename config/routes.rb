@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
+  get 'reports/index'
+  get 'reports/show'
+  get 'reports/new'
+  get 'reports/create'
+  get 'reports/edit'
+  get 'reports/update'
+  get 'reports/destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :personas
   resources :opponents
+  resources :reports
 
   root to: 'personas#new'
   get '/personas', to: 'personas#index', as: 'fighter'
