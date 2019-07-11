@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Fight</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <title>Test 1</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application' , :media => 'all'%>
+    <%= csrf_meta_tags %>
+    <%= yield "page_header" %>
+
+    <meta http-equiv="X-YA-Compatible" content="ie=edge">
+    
   </head>
 
-  <body>
-    <%= yield %>
+
+  <body >
+    <div id="container">
+      <%=yield%>
+    </div>
   </body>
 </html>

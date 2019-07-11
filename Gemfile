@@ -5,16 +5,15 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-# efficient binary serialization format Msgpack
-gem 'msgpack_rails'
+gem 'active_model_serializers', '~> 0.10.0', require: true, github: 'rails-api/active_model_serializers', branch: '0-10-stable'
+# Use SassC for stylesheets
+gem 'sassc-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0.rc1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
-# Use SassC for stylesheets
-gem 'sassc'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -31,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+# Use Rack CORS for handling Cross-Origin Resource Sharing, making cross-origin AJAX possible.
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -47,6 +48,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   # Use the Rails static code analyzer and code formatter Rubocop-rails
   gem 'rubocop-rails'
+  #  provides RSpec- and Minitest-compatible one-liners to test common Rails functionality
+  gem 'shoulda-matchers'
 end
 
 group :development do

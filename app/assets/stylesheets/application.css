@@ -1,15 +1,104 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@font-face {
+  font-family: 'GoodBrush';
+  src: url(../police/Good Brush.otf) format("otf"), url(../police/Good Brush.ttf) format("ttf"), url(../police/Good Brush.woff) format("woff"); }
+
+body {
+    background-color: #000;
+    display: flex;
+    flex-direction: row
+}
+
+#container {
+	background-color: #FFF;
+    width: 100%;
+    height: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.start-btn {
+	display: block;
+	width: 100%;
+	height: 100%;
+	margin: auto;	
+	font-family: 'GoodBrush';
+	text-shadow: 4px 4px 0px red;
+	font-size: 5em;
+}
+
+.btn {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: #FFC;
+
+}
+
+.start{
+	font-family: 'GoodBrush';
+	text-shadow: 4px 4px 0px red;
+	font-size: 5em;	
+	background-color: #FFC;
+	text-align: center;
+
+}
+h2 {
+	color: #000;
+	font-size: 3em;
+	font-family: 'GoodBrush';
+	text-align: center;
+	text-shadow: 4px 2px 0px red;
+}
+h1{
+	color: #FFF;
+}
+
+.arena {
+	display: flex;
+	flex-direction: row;
+	justify-content: center; 
+}
+
+.separator {
+	background-color: white;
+}
+.banniere {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.joystick {	
+	display: flex;
+	flex-direction: row;
+	justify-content: right;
+}
+
+.cool {
+	background-color: green;
+	font-color: yellow;
+	font-size: 2em;	
+	color: yellow;
+}
+.hard {
+	background-color: red;
+	font-color: yellow;
+	font-size: 2em;
+	color: yellow;
+}
+
+#loose {
+	background-color: red;
+	height: 100%;
+	font-size: 250px;
+	text-align: center;
+}
+
+#win {
+	background-color: green;
+	height: 100%;
+	font-size: 250px;
+	text-align: center;
+}
