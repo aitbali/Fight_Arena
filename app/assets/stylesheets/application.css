@@ -34,7 +34,6 @@ h1{
     flex-direction: column;
     justify-content: space-between;
 	color: #FFF;
-
 }
 
 
@@ -100,8 +99,6 @@ h1{
 	text-shadow: 1px 1px 0px red;
 	font-size: 3em;
 }
-
-
 
 #result {
 	font-size: 5em;
