@@ -137,10 +137,17 @@ class PersonasController < ApplicationController
         Report.create(decription: "You gave a Cool Attaque , IA looses #{Persona.last.pa / 30} points of PV.  You win 5 points points of PA . IA: PV=#{pv - Persona.last.pa / 30} / PA=#{Opponent.last.pa} . YOU: PV=#{Persona.last.pv} / PA=#{pa + 5}")
       else
         Opponent.update(Opponent.last.id, pv: 0 )
+        Report.create(decription: "You gave a Cool Attaque , IA looses #{Persona.last.pa / 30} points of PV.  You win 5 points points of PA . IA: PV=ZERO / PA=#{Opponent.last.pa} . YOU: PV=#{Persona.last.pv} / PA=#{pa + 5}")
       end
       Persona.update(Persona.last.id, pa: pa + 5 )
     end
-    render :index2
+    if Persona.last.pv.zero?
+      render :loose
+    elsif Opponent.last.pv.zero?
+      render :win
+    else
+      render :index2
+    end
   end
 
   def you_attaque_medium
@@ -153,6 +160,7 @@ class PersonasController < ApplicationController
         Report.create(decription: "You gave a Medium Attaque , IA looses #{Persona.last.pa / 10} points of PV.  You loose 5 points of PA . IA: PV=#{pv - Persona.last.pa / 10} / PA=#{Opponent.last.pa} . YOU: PV=#{Persona.last.pv} / PA=#{pa - 5}")
       else
         Opponent.update(Opponent.last.id, pv: 0 )
+        Report.create(decription: "You gave a Medium Attaque , IA looses #{Persona.last.pa / 10} points of PV.  You loose 5 points of PA . IA: PV=ZERO / PA=#{Opponent.last.pa} . YOU: PV=#{Persona.last.pv} / PA=#{pa - 5}")
       end
 
       if Persona.last.pa > 5
@@ -161,7 +169,13 @@ class PersonasController < ApplicationController
         Persona.update(Persona.last.id, pa: 0 )
       end
     end
-    render :index2
+    if Persona.last.pv.zero?
+      render :loose
+    elsif Opponent.last.pv.zero?
+      render :win
+    else
+      render :index2
+    end
   end
 
   def you_attaque_hard
@@ -174,6 +188,7 @@ class PersonasController < ApplicationController
         Report.create(decription: "You gave a Hard Attaque , IA looses #{Persona.last.pa / 5} points of PV.  You loose 10 points of PA . IA: PV=#{pv - Persona.last.pa / 5} / PA=#{Opponent.last.pa} . YOU: PV=#{Persona.last.pv} / PA=#{pa - 10}")
       else
         Opponent.update(Opponent.last.id, pv: 0 )
+        Report.create(decription: "You gave a Hard Attaque , IA looses #{Persona.last.pa / 5} points of PV.  You loose 10 points of PA . IA: PV=ZERO / PA=#{Opponent.last.pa} . YOU: PV=#{Persona.last.pv} / PA=#{pa - 10}")
       end
 
       if Persona.last.pa > 10
@@ -182,7 +197,13 @@ class PersonasController < ApplicationController
         Persona.update(Persona.last.id, pa: 0 )
       end
     end
-    render :index2
+    if Persona.last.pv.zero?
+      render :loose
+    elsif Opponent.last.pv.zero?
+      render :win
+    else
+      render :index2
+    end
   end
 
   def win; end

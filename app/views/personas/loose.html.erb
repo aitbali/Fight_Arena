@@ -1,16 +1,12 @@
-<% content_for("page_header") do %>
- <%= stylesheet_link_tag 'application.css' %>
-<% end %>
-
-  <div class="reporting">
-  	<% Report.all.each do |r| %>
-  	<%= r.decription %>
-  	<br>
-  	<% end %>
-  </div>
-<div id="loose"><p>YOU LOOSE</p></div>
-<div class="banniere">
+<div class="start">
   <form action="/personas/new" method="get">
     <input class="start-btn" type="submit" value="RESTART" >  
   </form>
+</div>
+<div id="result">YOU LOOSE</div>
+<div class="reporting">
+	<% Report.all.each do |r| %>
+	<%= r.decription %>
+	<br>
+	<% end %>
 </div>

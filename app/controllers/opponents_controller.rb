@@ -90,11 +90,18 @@ class OpponentsController < ApplicationController
         Report.create(decription: "IA gave you a Cool Attaque , you loose #{Opponent.last.pa / 30} points of PV.  IA wins 5 points of PA. IA: PV=#{Opponent.last.pv} / PA=#{pa + 5} . YOU: PV=#{pv - Opponent.last.pa / 30} / PA=#{Persona.last.pa}")
       else
         Persona.update(Persona.last.id, pv: 0 )
+        Report.create(decription: "IA gave you a Cool Attaque , you loose #{Opponent.last.pa / 30} points of PV.  IA wins 5 points of PA. IA: PV=#{Opponent.last.pv} / PA=#{pa + 5} . YOU: PV=ZERO / PA=#{Persona.last.pa}")
       end
 
       Opponent.update(Opponent.last.id, pa: pa + 5)
     end
-    redirect_to controller: 'personas', action: 'index'
+    if Persona.last.pv.zero?
+      redirect_to controller: 'personas', action: 'loose'
+    elsif Opponent.last.pv.zero?
+      redirect_to controller: 'personas', action: 'win'
+    else
+      redirect_to controller: 'personas', action: 'index'
+    end
   end
 
   def ia_attaque_medium
@@ -107,6 +114,7 @@ class OpponentsController < ApplicationController
         Report.create(decription: "IA gave you a Medium Attaque , you loose #{Opponent.last.pa / 10} points of PV.  IA looses 5 points of PA.  IA: PV=#{Opponent.last.pv} / PA=#{pa - 5} . YOU: PV=#{pv - Opponent.last.pa / 10} / PA=#{Persona.last.pa}")
       else
         Persona.update(Persona.last.id, pv: 0 )
+        Report.create(decription: "IA gave you a Medium Attaque , you loose #{Opponent.last.pa / 10} points of PV.  IA looses 5 points of PA.  IA: PV=#{Opponent.last.pv} / PA=#{pa - 5} . YOU: PV=ZERO / PA=#{Persona.last.pa}")
       end
 
       if Opponent.last.pa > 5
@@ -116,7 +124,13 @@ class OpponentsController < ApplicationController
       end
 
     end
-    redirect_to controller: 'personas', action: 'index'
+    if Persona.last.pv.zero?
+      redirect_to controller: 'personas', action: 'loose'
+    elsif Opponent.last.pv.zero?
+      redirect_to controller: 'personas', action: 'win'
+    else
+      redirect_to controller: 'personas', action: 'index'
+    end
   end
 
   def ia_attaque_hard
@@ -129,6 +143,7 @@ class OpponentsController < ApplicationController
         Report.create(decription: "IA gave you a Hard Attaque , you loose #{Opponent.last.pa / 5} points of PV.  IA looses 10 points of PA.  IA: PV=#{Opponent.last.pv} / PA=#{pa - 10} . YOU: PV=#{pv - Opponent.last.pa / 5} / PA=#{Persona.last.pa}")
       else
         Persona.update(Persona.last.id, pv: 0 )
+        Report.create(decription: "IA gave you a Hard Attaque , you loose #{Opponent.last.pa / 5} points of PV.  IA looses 10 points of PA.  IA: PV=#{Opponent.last.pv} / PA=#{pa - 10} . YOU: PV=ZERO / PA=#{Persona.last.pa}")
       end
 
       if Opponent.last.pa > 10
@@ -137,6 +152,12 @@ class OpponentsController < ApplicationController
         Opponent.update(Opponent.last.id, pa: 0 )
       end
     end
-    redirect_to controller: 'personas', action: 'index'
+    if Persona.last.pv.zero?
+      redirect_to controller: 'personas', action: 'loose'
+    elsif Opponent.last.pv.zero?
+      redirect_to controller: 'personas', action: 'win'
+    else
+      redirect_to controller: 'personas', action: 'index'
+    end
   end
 end
