@@ -96,7 +96,6 @@ class PersonasController < ApplicationController
     @persona.save
     if @persona.errors.empty?
       render :index
-      ts
     else
       flash[:error] = 'Failed to edit persona!'
       render json: { errors: @persona.errors }, status: :forbiddden
