@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/nzifnab/msgpack-rails.git
+  revision: 9887ec10b16ca679ac81589f165c9433a0ea84eb
+  specs:
+    msgpack-rails (1.0.2)
+      msgpack
+      rails (>= 5.0.0)
+
+GIT
   remote: https://github.com/rails-api/active_model_serializers.git
   revision: 2224cc8b506b52ab7d1a79af72d89fdd7e107e16
   branch: 0-10-stable
@@ -81,6 +89,7 @@ GEM
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 13.0)
     ast (2.4.0)
+    bcrypt (3.1.13)
     bindex (0.8.1)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
@@ -278,6 +287,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)!
   annotate (>= 2.5.0)
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
@@ -285,6 +295,7 @@ DEPENDENCIES
   faker!
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
+  msgpack-rails!
   nodejs-rails (~> 0.0.1)
   nyan-cat-formatter
   pg
