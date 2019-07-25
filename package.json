@@ -9,8 +9,11 @@
   "devDependencies": {
     "webpack-dev-server": "^3.7.2"
   },
-  "scripts": {
-    "precommit": "rubocop && annotate",
-    "prepush": "rubocop && rspec --format doc"
+  "scripts": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "rubocop && annotate",
+      "pre-push": "rubocop && rspec --format doc"
+    }
   }
 }
