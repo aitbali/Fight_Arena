@@ -2,7 +2,7 @@
 #
 # Table name: reports
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  decription :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

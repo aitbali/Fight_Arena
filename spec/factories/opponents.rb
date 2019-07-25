@@ -2,7 +2,7 @@
 #
 # Table name: opponents
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  avatarnum  :integer
 #  name       :string
 #  pa         :integer
